@@ -1,3 +1,39 @@
+## USER-ADDED
+## humans
+humans/results/
+humans/analysis/
+humans/models/
+humans/logs/
+humans/.vscode/
+humans/wandb/
+humans/data/
+humans/selected_results_analysis/
+humans/infobandit_pomdp/Manifest.toml
+humans/infobandit_pomdp/model.pomdpx
+humans/infobandit_pomdp/Project.toml
+humans/infobandit_pomdp/policy.out
+humans/FACSIMILE/
+
+## nns
+nns/archive/
+nns/results/
+nns/analysis/
+nns/models/
+nns/logs/
+nns/.vscode/
+nns/wandb/
+nns/data/
+nns/panels/
+nns/selected_results_analysis
+
+## pomdp
+pomdp_solver/Manifest.toml
+pomdp_solver/model.pomdpx
+pomdp_solver/Project.toml
+pomdp_solver/policy.out
+pomdp_solver/policy.out
+pomdp_solver/results
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
