@@ -4,7 +4,7 @@ This is code for the publication, ``Understanding human meta-control and its pat
 
 ### Instructions
 
-The main and supplementary figures are generated from the "fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories).
+The main and supplementary figures are generated from the "fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples of expected output.
 
 To run these, the "humans" folder first needs to be installed as a Python package by calling
 
