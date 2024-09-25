@@ -1,3 +1,7 @@
+# User
+humans/humanobe.egg-info
+nns/panels
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

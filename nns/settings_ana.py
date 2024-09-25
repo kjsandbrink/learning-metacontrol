@@ -8,15 +8,11 @@
 
 ## 04/08/24
 pepe_nn_ape_models = [
-
-    ## NEW - WITHOUT MANUAL SEED 
     20230922164924,
     20230922164923,
     20230922164921,
     20230922164920,
     20230922164918,
-
-    ## ALREADY GENERATED REPS -- WITHOUT MANUAL SEED
     20240215102214,
     20240215102212,
     20240215102211,
@@ -26,7 +22,6 @@ pepe_nn_ape_models = [
 
 ## 04/08/24
 pepe_nn_control_models = [
-    ## FC LAYER
     20240404140419,
     20240404140417,
     20240404140416,
@@ -153,9 +148,7 @@ pepe_nn_baseline_models = {
 
 ## EFFICACY-AT-INPUT MODELS
 ## 04/08/24
-
 pepe_nn_efficacy_at_input_models = [
-    ## WTIH FC
     20240407180045,
     20240407180044,
     20240407180042,
@@ -185,7 +178,6 @@ pepe_nn_extra_node_models = [
 
 #### WITH BIAS 0.5, VOLATILITY 0.2, AND NO HELDOUT TEST REGION
 #### 10/06/23
-
 pepe_human_ape_models = [
 	20230923060019,
 	20230923060017,
@@ -227,7 +219,6 @@ levc_human_ape_models = [
     20240305173359,
     20240305173357,
 ]
-#levc_human_control_traj_timestamp = '20240311133201'
 
 levc_human_control_models = [
     20240406130255,
@@ -242,60 +233,38 @@ levc_human_control_models = [
     20240405190145,
 ]
 
-
 # %% SETTINGS FOR INDIVIDUAL DIFFERENCES
 
 trait_simulated_participants_folder_t1 = 'data/sim_perturbed_participants/pepe/sim/mag100'
-#trait_sim_timestamp_t1 = '20240219163433'
 trait_sim_timestamp_t1 = '20240220100914'
-
 random_simulated_participants_folder_t1 = 'data/sim_perturbed_participants/pepe/random/mag100'
-#random_sim_timestamp_t1 = '20231015161128'
 random_sim_timestamp_t1 = '20240220100914'
-
 zeros_simulated_participants_folder_t1 = 'data/sim_perturbed_participants/pepe/nostruc/mag100'
-#random_sim_timestamp_t1 = '20231015161128'
 zeros_sim_timestamp_t1 = '20240220100914'
-
 trait_simulated_participants_folder_t2 = 'data/sim_perturbed_participants/levc/sim/mag50bias-80'
-
-### 150 PARTICIPANTS, 100 REPETITIONS OF EACH CASE
-trait_sim_timestamp_t2 = '20240502232009' ## MAG 50 BIAS -80 ### CURRENT BEST
-
+trait_sim_timestamp_t2 = '20240502232009'
 trait_sim_mag_perturbation=0.5
 trait_sim_bias_perturbation=-0.8
 random_simulated_participants_folder_t2 = 'data/sim_perturbed_participants/levc/random/mag50bias-80'
 random_sim_timestamp_t2 = '20240502232009'
-
-zeros_simulated_participants_folder_t2 = '/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/levc/nostruc/mag50bias-80'
-zeros_sim_timestamp_t2 = '20240502232009' ## MAG 50 BIAS 80 ### CURRENT BEST
+zeros_simulated_participants_folder_t2 = 'data/sim_perturbed_participants/levc/nostruc/mag50bias-80'
+zeros_sim_timestamp_t2 = '20240502232009'
 
 
 # %% TIMESTAMPS
 
-
 pepe_nn_ape_lc_timestamp = '20240408223405'
 pepe_nn_ape_traj_timestamp = '20240408223350'
-
 pepe_nn_control_lc_timestamp = '20240408223405'
 pepe_nn_extra_node_lc_timestamp = '20240318134420'
-
 pepe_nn_efficacy_at_input_traj_timestamp = '20240429123622'
 pepe_nn_efficacy_at_input_lc_timestamp = '20240411100946'
-
 pepe_nn_decoding_timestamp = '20240409140548'
-
 pepe_nn_baseline_lc_timestamp = '20240428225443'
-
-pepe_human_ape_traj_timestamp = '20231006143445' ## MATCHING 10/06/23
-
-
-pepe_human_ape_traj_timestamp = '20231006143445' ## MATCHING 10/06/23
-
+pepe_human_ape_traj_timestamp = '20231006143445'
+pepe_human_ape_traj_timestamp = '20231006143445'
 pepe_human_control_traj_timestamp = '20240408223350' 
-
 levc_human_ape_traj_timestamp = '20240311133201'
-
 levc_human_control_traj_timestamp = '20240409115346'
 
 timestamps = {

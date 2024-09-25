@@ -2,7 +2,11 @@
 
 This is code for the publication, ``Understanding human meta-control and its pathologies using deep neural networks" (Kai Sandbrink, Laurence Hunt, Christopher Summerfield).
 
-The main supplementary figures are generated from the "fig_\*.ipynb" notebooks in the "nns" folder. To run these, the "humans" folder first needs to be installed as a Python package by calling
+### Instructions
+
+The main and supplementary figures are generated from the "fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories).
+
+To run these, the "humans" folder first needs to be installed as a Python package by calling
 
 ``` 
 pip install -e . 
