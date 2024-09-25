@@ -449,7 +449,7 @@ def print_turkers(datass):
 
 # %%
 
-def get_participant_data(pid, data_folder, n_episodes):
+def get_participant_data(pid, data_folder, n_episodes, includes_sleep = False):
     ''' Returns the data associated with a participant found in data_folder, preferentially sampling from complete dataset but alternately from partial one 
     
     Arguments
@@ -471,14 +471,18 @@ def get_participant_data(pid, data_folder, n_episodes):
         participant_files.sort()
         #print(participant_files)
         last_participant_file = participant_files[-1]
+        is_complete = None
 
         if '_survey' in last_participant_file:
             last_participant_file = participant_files[-2]
+        elif includes_sleep:
+            ## if we are on day3, then we need a survey file, else the data is not complete
+            is_complete = False
 
         if '_ep' in last_participant_file:
             pdata, partials = combine_partial_datas(pid, data_folder)
             if(len(partials) >= n_episodes):
-                if(len(partials) == n_episodes):
+                if(len(partials) == n_episodes) and is_complete is None:
                     is_complete = True
                 else:
                     #assert False, 'unexpected number of episodes for ' + pid
@@ -526,9 +530,11 @@ def get_p_datass(participant_ids, data_folder, n_episodes, includes_sleep=False,
     datas = {}
     trajs = []
 
+    ## exclude participants that don't have survey files
+
     for participant_id in participant_ids:
         #print('processing', participant_id)
-        pdata, is_complete = get_participant_data(participant_id, data_folder, n_episodes = n_episodes)
+        pdata, is_complete = get_participant_data(participant_id, data_folder, n_episodes = n_episodes, includes_sleep=includes_sleep)
         #print('got participant data')
 
         #print(pdata)
@@ -1130,130 +1136,24 @@ def get_clean_data(day = 1, exp_date = '12-11', day1_mask_cutoff = None, day1_te
         The index of the first test efficacy value.
     '''
     
-    if exp_date == '518-525-619-706':
-
-    # files_day1 = [
-    #         'results/behavior/clean/20230731171558_behavior_diff_effs_5-25-28_both_day1_with_nets.pkl',
-    #         'results/behavior/clean/20230731171921_behavior_diff_effs_6-19_day1_with_nets.pkl',
-    #         'results/behavior/clean/20230731171354_behavior_diff_effs_7-6_day1_with_nets.pkl'
-    #         ]
-    
-    # files_day2 = [
-    #         'results/behavior/clean/20230707125522_behavior_diff_effs_5-25-28_both_day2_with_nets.pkl',
-    #         'results/behavior/clean/20230707131859_behavior_diff_effs_6-19_day2_with_nets.pkl',
-    #         'results/behavior/clean/20230710105942_behavior_diff_effs_7-6_day2_with_nets.pkl'
-    #     ]
-
-    # files_day3 = [
-    #     #'results/behavior/clean/20230802161631_behavior_diff_effs_6-19_day3_correctedeffs_with_nets.pkl',
-    #     #'results/behavior/20230802161719_behavior_diff_effs_7-6_day3_with_nets.pkl'
-    #     'results/behavior/clean/20230802182516_behavior_diff_effs_7-6_day3_with_nets_exclude-unconverged.pkl',
-    #     'results/behavior/clean/20230802182450_behavior_diff_effs_6-19_day3_correctedeffs_with_nets_exclude-unconverged.pkl',
-    # ]
-
-    ### AFTER ADDING NEW "MEAN LOGIT" MEASURES
-    # files_day1 = [
-    #     'results/behavior/20230918110358_behavior_diff_effs_5-25-28_both_day1_with_nets.pkl',
-    #     'results/behavior/20230918110436_behavior_diff_effs_6-19_day1_with_nets.pkl',
-    #     'results/behavior/20230918110505_behavior_diff_effs_7-6_day1_with_nets.pkl'
-    # ]
-
+    if exp_date == '24-01-22-29':
         files_day1 = [
-            'results/behavior/20231023191637_behavior_diff_effs_5-25-28_both_day1_with_nets.pkl',
-            'results/behavior/20231023191726_behavior_diff_effs_6-19_day1_with_nets.pkl',
-            'results/behavior/20231023191819_behavior_diff_effs_7-6_day1_with_nets.pkl',
-        ]
-
-    # files_day2 = [
-    #     'results/behavior/20230918110419_behavior_diff_effs_5-25-28_both_day2_with_nets.pkl',
-    #     'results/behavior/20230918110451_behavior_diff_effs_6-19_day2_with_nets.pkl',
-    #     'results/behavior/20230918110519_behavior_diff_effs_7-6_day2_with_nets.pkl',
-    # ]
-
-
-    ### WITH TEACHER FORCING 10/23
-    # files_day2 = [
-    #     'results/behavior/20231023134224_behavior_diff_effs_5-25-28_both_day2_with_nets.pkl',
-    #     'results/behavior/20231023134406_behavior_diff_effs_6-19_day2_with_nets.pkl',
-    #     'results/behavior/20231023134317_behavior_diff_effs_7-6_day2_with_nets.pkl'
-    # ]
-    
-    ## WITH TEACHER FORCING AND NEW NETWORK MODELS 10/25
-        files_day2 = [
-            'results/behavior/20231023191659_behavior_diff_effs_5-25-28_both_day2_with_nets.pkl',
-            'results/behavior/20231023191744_behavior_diff_effs_6-19_day2_with_nets.pkl',
-            'results/behavior/20231023191840_behavior_diff_effs_7-6_day2_with_nets.pkl',
-        ]
-
-        files_day3 = [
-            'results/behavior/20231027165524_behavior_diff_effs_6-19_day3_correctedeffs_with_nets.pkl',
-            'results/behavior/20231027165456_behavior_diff_effs_7-6_day3_with_nets.pkl',
-        ]
-
-
-    ### FOR DATASET FOR EXPERIMENTAL RUN 12/11 - WITHOUT NNS
-
-    elif exp_date == '12-11':
-        files_day1 = [
-            'results/behavior/20231215131027_behavior_diff_effs_12-11_day1.pkl',
+            'data/behavior_24-01-22_day1.pkl',
+            'data/behavior_24-01-29_day1.pkl',
         ]
 
         files_day2 = [
-            'results/behavior/20231215131752_behavior_diff_effs_12-11_day2.pkl',
+            'data/behavior_24-01-22_day2.pkl',
+            'data/behavior_24-01-22_day2B.pkl',            
+            'data/behavior_24-01-29_day2.pkl',
+            'data/behavior_24-01-29_day2B.pkl',
         ]
 
         files_day3 = [
-            'results/behavior/20231215132641_behavior_diff_effs_12-11_day3.pkl',
-        ]
-
-    elif exp_date == '24-01-22':
-        files_day1 = [
-            'results/behavior/20240129124114_behavior_diff_effs_24-01-22_day1.pkl',
-        ]
-
-        files_day2 = [
-            'results/behavior/20240129130556_behavior_diff_effs_24-01-22_day2.pkl',
-            'results/behavior/20240129131053_behavior_diff_effs_24-01-22_day2B.pkl',
-        ]
-
-        files_day3 = [
-            'results/behavior/20240129132922_behavior_diff_effs_24-01-22_day3.pkl',
-            'results/behavior/20240129133603_behavior_diff_effs_24-01-22_day3B.pkl'
-        ]
-
-    elif exp_date == '24-01-29':
-        files_day1 = [
-            'results/behavior/20240205190303_behavior_diff_effs_24-01-29_day1.pkl',
-        ]
-
-        files_day2 = [
-            'results/behavior/20240205190355_behavior_diff_effs_24-01-29_day2.pkl',
-            'results/behavior/20240205190422_behavior_diff_effs_24-01-29_day2B.pkl',
-        ]
-
-        files_day3 = [
-            'results/behavior/20240205190457_behavior_diff_effs_24-01-29_day3.pkl',
-            'results/behavior/20240205190527_behavior_diff_effs_24-01-29_day3B.pkl',
-        ]
-
-    elif exp_date == '24-01-22-29':
-        files_day1 = [
-            'results/behavior/20240205190303_behavior_diff_effs_24-01-29_day1.pkl',
-            'results/behavior/20240129124114_behavior_diff_effs_24-01-22_day1.pkl',
-        ]
-
-        files_day2 = [
-            'results/behavior/20240205190355_behavior_diff_effs_24-01-29_day2.pkl',
-            'results/behavior/20240205190422_behavior_diff_effs_24-01-29_day2B.pkl',            
-            'results/behavior/20240129130556_behavior_diff_effs_24-01-22_day2.pkl',
-            'results/behavior/20240129131053_behavior_diff_effs_24-01-22_day2B.pkl',
-        ]
-
-        files_day3 = [
-            'results/behavior/20240129132922_behavior_diff_effs_24-01-22_day3.pkl',
-            'results/behavior/20240129133603_behavior_diff_effs_24-01-22_day3B.pkl',
-            'results/behavior/20240205190457_behavior_diff_effs_24-01-29_day3.pkl',
-            'results/behavior/20240205190527_behavior_diff_effs_24-01-29_day3B.pkl',
+            'data/behavior_24-01-22_day3.pkl',
+            'data/behavior_24-01-22_day3B.pkl',
+            'data/behavior_24-01-29_day3.pkl',
+            'data/behavior_24-01-29_day3B.pkl',
         ]
 
     else:

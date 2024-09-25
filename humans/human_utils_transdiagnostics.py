@@ -22,45 +22,21 @@ from sklearn.decomposition import PCA
 
 def get_clean_transdiagnostics(exp_date = '24-01-22-29', file_base = '', facsimile = True):
 
-    if exp_date == '518-525-619-706':
-        if not facsimile:
-            files = [
-                '20230530034900_transdiagnostic_scores_diff_effs_combined.csv',
-                '20230623183327_transdiagnostic_scores_diff_effs_combined_day3.csv',
-                '20230710110620_transdiagnostic_scores_diff_effs_combined_7-6_day3.csv',
-            ]
-        else:
-            files = [
-                '20240829114535_transdiagnostic_scores_diff_effs_5-25-28_preprocessed_FACSIMILE.csv',
-                '20240829114930_transdiagnostic_scores_diff_effs_6-19_preprocessed_FACSIMILE.csv',
-                '20240829115109_transdiagnostic_scores_diff_effs_7-6_preprocessed_FACSIMILE.csv',
-            ]
-    elif exp_date == '24-01-22-29':
+    if exp_date == '24-01-22-29' and facsimile:
 
-        ## WITH CORRECTED A/D
-        if not facsimile:
-            files = [
-                '20240612104105_transdiagnostic_scores_diff_effs_22A_preprocessed.csv',
-                '20240612104202_transdiagnostic_scores_diff_effs_22B_preprocessed.csv',
-                '20240612104247_transdiagnostic_scores_diff_effs_29A_preprocessed.csv',
-                '20240612104324_transdiagnostic_scores_diff_effs_29B_preprocessed.csv',
-            ]
-
-        ## WITH FACSIMILE SCORES
-        else:
-            files = [
-                '20240715143602_transdiagnostic_scores_diff_effs_22A_preprocessed_FACSIMILE.csv',
-                '20240715161317_transdiagnostic_scores_diff_effs_22B_preprocessed_FACSIMILE.csv',
-                '20240715161542_transdiagnostic_scores_diff_effs_29A_preprocessed_FACSIMILE.csv',
-                '20240715161605_transdiagnostic_scores_diff_effs_29B_preprocessed_FACSIMILE.csv',
-            ]
+        files = [
+            'transdiagnostics_22A.csv',
+            'transdiagnostics_22B.csv',
+            'transdiagnostics_29A.csv',
+            'transdiagnostics_29B.csv',
+        ]
     else:
         raise ValueError('exp_date not found')
 
     df = pd.DataFrame()
 
     for file in files:
-        df = pd.concat([df, pd.read_csv(os.path.join(file_base,'results/transdiagnostic_scores/clean/%s' %file), index_col=0)])
+        df = pd.concat([df, pd.read_csv(os.path.join(file_base,'data/%s' %file), index_col=0)])
 
     return df
 
@@ -68,6 +44,18 @@ def get_clean_combined_data(day = 1, exp_date='24-01-22-29', group='groupA', day
 
     df_behav, effs_train, effs_test, test_start = get_clean_data(day = day, group=group, exp_date=exp_date, day1_test_mask_cutoff=day1_test_mask_cutoff, file_base=file_base)
     df_trans = get_clean_transdiagnostics(exp_date = exp_date, file_base=file_base, facsimile=facsimile)
+
+    padded_indices = []
+    for pid in df_trans.index:
+        idx = int(pid)
+        id_str = ''
+        if idx < 100:
+            id_str += '0'
+        if idx < 10:
+            id_str += '0'
+        id_str += str(idx)
+        padded_indices.append(id_str)
+    df_trans.index = padded_indices
 
     df = pd.merge(df_behav, df_trans, left_index=True, right_index=True)
 
