@@ -1,4 +1,4 @@
-name: metacontrol-public
+name: metacontrol
 channels:
   - conda-forge
   - defaults
@@ -110,4 +110,4 @@ dependencies:
     - virtualenv==20.24.5
     - wandb==0.12.21
     - xarray==2024.2.0
-prefix: /home/kai/anaconda3/envs/metacontrol-public
+prefix: /home/kai/anaconda3/envs/metacontrol

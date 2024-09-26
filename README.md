@@ -1,6 +1,6 @@
 # learning-metacontrol
 
-This is code for the publication, ``Understanding human meta-control and its pathologies using deep neural networks" (Kai Sandbrink, Laurence Hunt, Christopher Summerfield).
+This is code for the publication, ``Understanding human meta-control and its pathologies using deep neural networks" (Kai Sandbrink, Laurence Hunt, Christopher Summerfield). Preprint: https://osf.io/preprints/osf/5ezxs
 
 ### Instructions
 
