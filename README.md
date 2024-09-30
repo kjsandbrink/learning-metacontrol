@@ -6,13 +6,19 @@ This is code for the publication, "Understanding human meta-control and its path
 
 The main and supplementary figures are generated from the "fig_\*.ipynb" and "supp_fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples of expected output.
 
-To run these, the "humans" folder first needs to be installed as a Python package by calling
+To run these, the conda environment needs to be installed using the command
+
+```
+conda env create -f environment.yml
+```
+
+Then, the "humans" folder first needs to be installed as a Python package by calling
 
 ``` 
 pip install -e . 
 ```
 
-from the "humans" directory (which should only take a few seconds on a normal computer).
+from the "humans" directory. Both steps together should take a few minutes on a normal computer.
 
 To train the neural networks, run the "run_\*.py" files in "nns". Then, run the needed "sample_\*.py" and "save_\*.py" files to generate the synthetic behavioral and neural data, updating the timestamps as needed.
 
