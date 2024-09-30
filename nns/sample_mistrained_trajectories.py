@@ -12,7 +12,7 @@ from utils_project import load_config_files
 from test_case import test
 import os, copy, pickle
 
-from sample_pepe_trajectories import sample_model_trajectory
+from nns.sample_task1_trajectories import sample_model_trajectory
 
 import multiprocessing as mp
 

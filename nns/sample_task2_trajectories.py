@@ -14,7 +14,7 @@ import os, copy, pickle
 
 import multiprocessing as mp
 
-from sample_pepe_trajectories import sample_model_trajectory
+from nns.sample_task1_trajectories import sample_model_trajectory
 
 from nns.settings_ana import levc_human_ape_models as ape_models
 from nns.settings_ana import levc_human_control_models as control_models
