@@ -10,9 +10,10 @@ To run these, the conda environment needs to be installed using the command
 
 ```
 conda env create -f environment.yml
+conda activate metacontrol
 ```
 
-Then, the "humans" folder first needs to be installed as a Python package by calling
+With the build environment active, the "humans" folder then needs to be installed as a Python package by calling
 
 ``` 
 pip install -e . 
