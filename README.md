@@ -4,7 +4,7 @@ This is code for the publication, ``Understanding human meta-control and its pat
 
 ### Instructions
 
-The main and supplementary figures are generated from the "fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples of expected output.
+The main and supplementary figures are generated from the "fig_\*.ipynb" and "supp_fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples 
 
 To run these, the "humans" folder first needs to be installed as a Python package by calling
 
@@ -18,7 +18,7 @@ To train the neural networks, run the "run_\*.py" files in "nns". Then, run the 
 
 To generate the POMPD solutions, run the "ovb_pepe_testcases_j_takes.jl" script followed by "ana_multi_efficacy_pomdp.py". 
 
-A few individual supplementary panels are generated directly from the individual "ana_\*.py" scripts.
+A few individual supplementary panels are generated directly from the individual "ana_\*.py" scripts. The "stats_likelihood.ipynb" notebook analyzes the likelihood of human choices under neural network policies.
 
 The human behavioral data is in the data folder. The scripts used for data collection are in the website folder.
 
