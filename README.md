@@ -1,10 +1,10 @@
 # learning-metacontrol
 
-This is code for the publication, ``Understanding human meta-control and its pathologies using deep neural networks" (Kai Sandbrink, Laurence Hunt, Christopher Summerfield). Preprint: https://osf.io/preprints/osf/5ezxs
+This is code for the publication, "Understanding human meta-control and its pathologies using deep neural networks" (Kai Sandbrink, Laurence Hunt, Christopher Summerfield). Preprint: https://osf.io/preprints/osf/5ezxs
 
 ### Instructions
 
-The main and supplementary figures are generated from the "fig_\*.ipynb" and "supp_fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples 
+The main and supplementary figures are generated from the "fig_\*.ipynb" and "supp_fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples of expected output.
 
 To run these, the "humans" folder first needs to be installed as a Python package by calling
 
