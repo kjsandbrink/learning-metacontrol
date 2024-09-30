@@ -21,7 +21,7 @@ pip install -e .
 
 from the "humans" directory. Both steps together should take a few minutes on a normal computer.
 
-To train the neural networks, run the "run_\*.py" files in "nns". Then, run the needed "sample_\*.py" and "save_\*.py" files to generate the synthetic behavioral and neural data, updating the timestamps as needed.
+To train the neural networks, run the "run_\*.py" files from the folder "nns". Then, run the needed "sample_\*.py" and "save_\*.py" files to generate the synthetic behavioral and neural data, updating the timestamps as needed.
 
 To generate the POMPD solutions, run the "ovb_pepe_testcases_j_takes.jl" script followed by "ana_multi_efficacy_pomdp.py". 
 
