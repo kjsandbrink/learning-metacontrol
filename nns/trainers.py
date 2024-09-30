@@ -248,7 +248,6 @@ def train(config, nn_options, task_options, device):
             logitss = torch.stack(logitss, axis=0).to(device)
             saved_log_probs = torch.stack(saved_log_probs, axis=0).to(device)
 
-            ## OLD METHOD BASED ON SIMPLE REINFORCE / HARDCODED CRITIC
             # based mostly on https://github.com/pytorch/examples/blob/main/distributed/rpc/batch/reinforce.py
             if nn_options.value_loss_coeff == 0:
 
@@ -316,36 +315,11 @@ def train(config, nn_options, task_options, device):
                     ape_loss = sum(ape_returns)
                 pseudo_loss = torch.sum( - saved_log_probs * returns)
 
-
-            ## NEW METHOD WITH A2C
-            # ref: https://github.com/BKHMSI/Meta-RL-Harlow/blob/65210fe28109cc4e2cdba41f9ea1e506208846cc/Harlow_1D/train.py#L302
+            # ref for A2C: https://github.com/BKHMSI/Meta-RL-Harlow/blob/65210fe28109cc4e2cdba41f9ea1e506208846cc/Harlow_1D/train.py#L302
             else:
-                pseudo_loss = 0
-                value_loss = 0
-                ape_loss = 0
-                    #this method uses iterative summing of rewards
-                R = 0
-                A = 0 #advantage estimate (total n-step)
-                for i in reversed(range(len(rewards))):
-                    R = rewards[i] + config.discount*R
-                    advantage = R - valuess[i]
-
-                    value_loss = value_loss + 0.5 * advantage.pow(2)
-
-                    ## calculate n-step returns
-                    #A = advantage + config.discount*A
-
-                    pseudo_loss = pseudo_loss - saved_log_probs[i]*advantage
-
-                    ape_loss = ape_loss + 0.5 * (actions_failed_take[i] - controls[i]).pow(2)
+                assert False, "value loss coeff must be 0"
 
             log_losses = {'losses/returns_loss': pseudo_loss.cpu().detach().float()}
-
-            ## ADD CRITIC LOSS TERM IF NECESSARY
-            if nn_options.value_loss_coeff != 0:
-                log_losses['losses/value_loss'] = value_loss.cpu().detach().float()
-
-                pseudo_loss += nn_options.value_loss_coeff * value_loss
 
             if nn_options.ape_loss_coeff is not None and not nn_options.hardcode_efficacy:
                 log_losses['losses/ape_loss'] = ape_loss.cpu().detach().float()
