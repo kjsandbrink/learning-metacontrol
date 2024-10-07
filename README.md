@@ -27,7 +27,7 @@ To generate the POMPD solutions, run the "ovb_pepe_testcases_j_takes.jl" script 
 
 A few individual supplementary panels are generated directly from the individual "ana_\*.py" scripts. The "stats_likelihood.ipynb" notebook analyzes the likelihood of human choices under neural network policies.
 
-The human behavioral data is in the data folder. The scripts used for data collection are in the website folder.
+The human behavioral data is in the "data" folder. The scripts used for data collection are in the "website" folder. Neural network trajectories are in the "data" subfolder in the "nns" folder.
 
 ### Versions
 
