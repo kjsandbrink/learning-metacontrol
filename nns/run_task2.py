@@ -139,13 +139,6 @@ if __name__ == '__main__':
     tags = ['LEVC_w APE', 'LEVC_w APE', 'LEVC_no APE']
     ape_loss_coeffs = [100, 100, 0]
 
-    # devices = ['cpu', 'cuda:0', 'cuda:1', 'cuda:2', 'cuda:3']
-    # #devices = ['cpu'] * 4
-    # tags = ['LEVC_w APE', 'LEVC_no APE', 'LEVC_w APE', 'LEVC_no APE']
-    # ape_loss_coeffs = [100, 0, 100, 0]
-
-    #starting_taus = np.arange(0, 1.01, 0.25)
-
     ## SET UP MULTIPROCESSING
     mp.set_start_method('spawn')
     processes = []
@@ -153,11 +146,9 @@ if __name__ == '__main__':
     for device, tag, ape_loss_coeff in zip(devices, tags, ape_loss_coeffs):
 
         ## LOAD DEVICE
-        #device = "cuda" if torch.cuda.is_available() else "cpu"
-        #device = config.device if torch.cuda.is_available() else "cpu"
         device = device if torch.cuda.is_available() else "cpu"
         print(f"Using {device} device")
-
+        
         for i in range(n_runs):
             current_config = Config(copy.deepcopy(config.__dict__))
             current_config.tags[0] = tag

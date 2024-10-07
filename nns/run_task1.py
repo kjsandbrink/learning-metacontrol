@@ -148,51 +148,28 @@ task_options = Config({
 if __name__ == '__main__':
 
     devices = [ 'cpu', 'cpu']*2
-    # tags = ['explore-exploit_w APE', 'explore-exploit_no APE', ]*2
-    # ape_loss_coeffs = [25, 0]*2
-    # biases = [0.125, 0.375, 0.625, 0.875]    
-    # devices = [ 'cpu', 'cpu']
-    # tags = ['explore-exploit_no APE']*2
-    # ape_loss_coeffs = [0]*2
-
-    #starting_taus = np.arange(0.625, 1.01, 0.125)
-    starting_taus = [0.125, 0.375, 0.625, 0.875]
-
+    tags = ['explore-exploit_w APE', 'explore-exploit_no APE', ]*2
+    ape_loss_coeffs = [25, 0]*2
+    
     ## SET UP MULTIPROCESSING
     mp.set_start_method('spawn')
     processes = []
 
-    #for device, tag, ape_loss_coeff in zip(devices,tags,ape_loss_coeffs):
-    for device, tau in zip(devices,starting_taus):
-
-        ## LOAD DEVICE
-        #device = "cuda" if torch.cuda.is_available() else "cpu"
-        #device = config.device if torch.cuda.is_available() else "cpu"
+    for device, tag, ape_loss_coeff in zip(devices,tags,ape_loss_coeffs):
+    
         device = device if torch.cuda.is_available() else "cpu"
         print(f"Using {device} device")
 
         for i in range(n_runs):
             current_config = Config(copy.deepcopy(config.__dict__))
-            #current_config.tags[0] = tag
 
             current_nn_options = Config(copy.deepcopy(nn_options.__dict__))
-            #current_nn_options.ape_loss_coeff = ape_loss_coeff
 
             current_task_options = Config(copy.deepcopy(task_options.__dict__))
-            #current_task_options.bias = bias
-            current_task_options.starting_taus['take'] = tau
-
-            ## EUNICE
-            # current_config = config
-            # current_nn_options = nn_options
-            # current_task_options = Config(copy.deepcopy(task_options.__dict__))
-            # current_task_options.bias = bias
             
             p = mp.Process(target=train, args=(current_config, current_nn_options, current_task_options, device))
             p.start()
             processes.append(p)
-
-            #train(current_config, current_nn_options, task_options, device)
 
             time.sleep(1.5)
         

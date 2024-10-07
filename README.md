@@ -89,6 +89,8 @@ The simulated perturbed participants contian the following pickled numpy arrays:
 
 - **perturbed_counters_peeks_taus**, np.array [n_controllability_levels, n_simulated_participants]: the number of observe actions in each episode for each of the simulated partiicpants
 
+- **rewss_taus**, np.array [n_controllability_levels, n_simulated_participants]: the number of rewards in each episode for each of the simulated partiicpants
+
 - **perturbed_test_taus**, np.array [n_controllaility_levels]: the tested controllability levels, in the format tau = 1 - controllability
 
 For the second task, the folder contains the additional array **perturbed_sleep_errs_taus_ape**.
