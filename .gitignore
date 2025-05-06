@@ -1,11 +1,12 @@
 # User
 humans/humanobe.egg-info
+nns/nnobs.egg-info
 nns/panels
 nns/wandb/
 nns/models/
 
 # Byte-compiled / optimized / DLL files
-__pycache__/
+*__pycache__/
 *.py[cod]
 *$py.class
 

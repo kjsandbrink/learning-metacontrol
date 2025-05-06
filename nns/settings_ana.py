@@ -2,6 +2,10 @@
 # 2024-03-08
 # This script aggregates settings for import by the various analysis scripts.
 
+# %% HUMAN DATA
+
+human_data_file_base = '../data/humans'
+
 # %% TASK 1 MODELS
 
 #### WITH BIAS = 0.4
@@ -235,21 +239,20 @@ levc_human_control_models = [
 
 # %% SETTINGS FOR INDIVIDUAL DIFFERENCES
 
-trait_simulated_participants_folder_t1 = 'data/sim_perturbed_participants/pepe/sim/mag100'
+trait_simulated_participants_folder_t1 = '../data/nns/sim_perturbed_participants/pepe/sim/mag100'
 trait_sim_timestamp_t1 = '20240220100914'
-random_simulated_participants_folder_t1 = 'data/sim_perturbed_participants/pepe/random/mag100'
+random_simulated_participants_folder_t1 = '../data/nns/sim_perturbed_participants/pepe/random/mag100'
 random_sim_timestamp_t1 = '20240220100914'
-zeros_simulated_participants_folder_t1 = 'data/sim_perturbed_participants/pepe/nostruc/mag100'
+zeros_simulated_participants_folder_t1 = '../data/nns/sim_perturbed_participants/pepe/nostruc/mag100'
 zeros_sim_timestamp_t1 = '20240220100914'
-trait_simulated_participants_folder_t2 = 'data/sim_perturbed_participants/levc/sim/mag50bias-80'
+trait_simulated_participants_folder_t2 = '../data/nns/sim_perturbed_participants/levc/sim/mag50bias-80'
 trait_sim_timestamp_t2 = '20240502232009'
 trait_sim_mag_perturbation=0.5
 trait_sim_bias_perturbation=-0.8
-random_simulated_participants_folder_t2 = 'data/sim_perturbed_participants/levc/random/mag50bias-80'
+random_simulated_participants_folder_t2 = '../data/nns/sim_perturbed_participants/levc/random/mag50bias-80'
 random_sim_timestamp_t2 = '20240502232009'
-zeros_simulated_participants_folder_t2 = 'data/sim_perturbed_participants/levc/nostruc/mag50bias-80'
+zeros_simulated_participants_folder_t2 = '../data/nns/sim_perturbed_participants/levc/nostruc/mag50bias-80'
 zeros_sim_timestamp_t2 = '20240502232009'
-
 
 # %% TIMESTAMPS
 

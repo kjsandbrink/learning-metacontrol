@@ -36,7 +36,7 @@ def get_clean_transdiagnostics(exp_date = '24-01-22-29', file_base = '', facsimi
     df = pd.DataFrame()
 
     for file in files:
-        df = pd.concat([df, pd.read_csv(os.path.join(file_base,'data/%s' %file), index_col=0)])
+        df = pd.concat([df, pd.read_csv(os.path.join(file_base, file), index_col=0)])
 
     return df
 

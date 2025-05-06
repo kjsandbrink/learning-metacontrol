@@ -1138,22 +1138,22 @@ def get_clean_data(day = 1, exp_date = '12-11', day1_mask_cutoff = None, day1_te
     
     if exp_date == '24-01-22-29':
         files_day1 = [
-            'data/behavior_24-01-22_day1.pkl',
-            'data/behavior_24-01-29_day1.pkl',
+            'behavior_24-01-22_day1.pkl',
+            'behavior_24-01-29_day1.pkl',
         ]
 
         files_day2 = [
-            'data/behavior_24-01-22_day2.pkl',
-            'data/behavior_24-01-22_day2B.pkl',            
-            'data/behavior_24-01-29_day2.pkl',
-            'data/behavior_24-01-29_day2B.pkl',
+            'behavior_24-01-22_day2.pkl',
+            'behavior_24-01-22_day2B.pkl',            
+            'behavior_24-01-29_day2.pkl',
+            'behavior_24-01-29_day2B.pkl',
         ]
 
         files_day3 = [
-            'data/behavior_24-01-22_day3.pkl',
-            'data/behavior_24-01-22_day3B.pkl',
-            'data/behavior_24-01-29_day3.pkl',
-            'data/behavior_24-01-29_day3B.pkl',
+            'behavior_24-01-22_day3.pkl',
+            'behavior_24-01-22_day3B.pkl',
+            'behavior_24-01-29_day3.pkl',
+            'behavior_24-01-29_day3B.pkl',
         ]
     elif exp_date == '518-525-619-706':
         files_day1 = [
