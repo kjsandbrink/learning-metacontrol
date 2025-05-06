@@ -588,7 +588,7 @@ def plot_line_scatter_humans_ape_noape_group(test, effs_test, train=None, effs_t
 
 # %% 
 
-def plot_line_scatter_group(test, effs_test, train=None, effs_train=None, ylabel='Mean Interval per Participant', xlabel="Controllability", xjitter=0.1, yjitter=0.1, ylim=None, median_over_mean=False):
+def plot_line_scatter_group(test, effs_test, train=None, effs_train=None, ylabel='Mean Interval per Participant', xlabel="Efficacy", xjitter=0.1, yjitter=0.1, ylim=None, median_over_mean=False):
     ''' Makes a line plot with overlaid scatter plots for test and train data, connecting all test data points with a single line, including shaded error bars for these connections.
     '''
 

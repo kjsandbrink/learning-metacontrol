@@ -1155,6 +1155,25 @@ def get_clean_data(day = 1, exp_date = '12-11', day1_mask_cutoff = None, day1_te
             'data/behavior_24-01-29_day3.pkl',
             'data/behavior_24-01-29_day3B.pkl',
         ]
+    elif exp_date == '518-525-619-706':
+        files_day1 = [
+            'results/behavior/20231023191637_behavior_diff_effs_5-25-28_both_day1_with_nets.pkl',
+            'results/behavior/20231023191726_behavior_diff_effs_6-19_day1_with_nets.pkl',
+            'results/behavior/20231023191819_behavior_diff_effs_7-6_day1_with_nets.pkl',
+        ]
+    
+        ## WITH TEACHER FORCING AND NEW NETWORK MODELS 10/25
+        files_day2 = [
+            'results/behavior/20231023191659_behavior_diff_effs_5-25-28_both_day2_with_nets.pkl',
+            'results/behavior/20231023191744_behavior_diff_effs_6-19_day2_with_nets.pkl',
+            'results/behavior/20231023191840_behavior_diff_effs_7-6_day2_with_nets.pkl',
+        ]
+
+        files_day3 = [
+            'results/behavior/20231027165524_behavior_diff_effs_6-19_day3_correctedeffs_with_nets.pkl',
+            'results/behavior/20231027165456_behavior_diff_effs_7-6_day3_with_nets.pkl',
+        ]
+
 
     else:
         assert False, 'Invalid experiment date specified.'

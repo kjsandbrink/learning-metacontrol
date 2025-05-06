@@ -1,6 +1,8 @@
 # User
 humans/humanobe.egg-info
 nns/panels
+nns/wandb/
+nns/models/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
