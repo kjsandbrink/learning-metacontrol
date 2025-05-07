@@ -4,7 +4,7 @@ nns/nnobs.egg-info
 nns/panels
 nns/wandb/
 nns/models/
-panels_temp
+panels/
 
 # Byte-compiled / optimized / DLL files
 *__pycache__/
