@@ -54,6 +54,8 @@ def sample_perturbed_model_trajectory(modelname, test_taus, model_save_folder=No
     counters_peeks_taus_ape = []
     control_errs_taus_ape = []
     counters_sleeps_taus_ape = []
+    control_trajs_errs_ape = []
+    control_trajs_ape = []
 
     for test_tau in test_taus:
         
@@ -64,14 +66,18 @@ def sample_perturbed_model_trajectory(modelname, test_taus, model_save_folder=No
         if perturbation is not None:
             target += perturbation
 
+        target = target / 2
+
         tau_task_options = Config(copy.deepcopy(task_options.__dict__))
         tau_task_options.starting_taus = {'peek': 0, 'take': test_tau}
 
-        _, (rews_ape, _, counter_peeks_ape, counter_sleeps_taus_ape, _, _, control_errs_ape) = perturbed_test(config, ape_nn_options, tau_task_options, n_repeats_case = n_repeats_case, device=device, model_folder=model_folder, target_tau=target)
+        (_, _, _, _, controlss, _, control_errs), (rews_ape, _, counter_peeks_ape, counter_sleeps_taus_ape, _, _, control_errs_ape) = perturbed_test(config, ape_nn_options, tau_task_options, n_repeats_case = n_repeats_case, device=device, model_folder=model_folder, target_tau=target)
         rews_taus_ape.append(rews_ape)
         counters_peeks_taus_ape.append(counter_peeks_ape)
         control_errs_taus_ape.append(control_errs_ape)
         counters_sleeps_taus_ape.append(counter_sleeps_taus_ape)
+        control_trajs_ape.append(controlss)
+        control_trajs_errs_ape.append(control_errs)
 
     if model_save_folder is not None:
         #model_save_folder = os.path.join(save_base_data_folder, str(modelname))
@@ -93,6 +99,8 @@ def sample_perturbed_model_trajectory(modelname, test_taus, model_save_folder=No
 
         if ape:
             pickle.dump(control_errs_taus_ape, open(os.path.join(model_save_folder, '%s_perturbed_control_errs_taus_ape.pkl' %timestamp), 'wb'))    
+            pickle.dump(control_trajs_ape, open(os.path.join(model_save_folder, '%s_perturbed_control_trajs_ape.pkl' %timestamp), 'wb'))
+            pickle.dump(control_trajs_errs_ape, open(os.path.join(model_save_folder, '%s_perturbed_control_trajs_errs_ape.pkl' %timestamp), 'wb'))
 
         if sleep:
             pickle.dump(counters_sleeps_taus_ape, open(os.path.join(model_save_folder, '%s_perturbed_sleep_errs_taus_ape.pkl' %timestamp), 'wb'))    

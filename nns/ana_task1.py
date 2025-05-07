@@ -33,7 +33,7 @@ from nns.settings_ana import pepe_nn_control_models as control_models
 
 ape_modelname = str(ape_models[0]) 
 control_modelname = str(control_models[0])
-base_results_folder = 'models'
+base_results_folder = os.path.join('..', 'data', 'nns', 'models')
 
 ape_results_folder = os.path.join(base_results_folder,ape_modelname)
 control_results_folder = os.path.join(base_results_folder, control_modelname)
@@ -45,9 +45,9 @@ config.load_config_file(os.path.join(ape_results_folder, 'config.yaml'))
 config.n_repeats_case = 100
 
 ape_config = Config(copy.deepcopy(config.__dict__))
-ape_config.model_folder = os.path.join('models', ape_modelname)
+ape_config.model_folder = os.path.join(base_results_folder, ape_modelname)
 control_config = Config(copy.deepcopy(config.__dict__))
-control_config.model_folder = os.path.join('models', control_modelname)
+control_config.model_folder = os.path.join(base_results_folder, control_modelname)
 
 task_options = Config({})
 task_options.load_config_file(os.path.join(ape_results_folder, 'task_options.yaml'))

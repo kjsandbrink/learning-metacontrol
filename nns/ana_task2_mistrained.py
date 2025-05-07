@@ -52,12 +52,12 @@ timestamp_original_traj = '20230522212935'
 
 n_models = len(ape_models)
 
-mistrained_model_folder = os.path.join('data', 'mistrained_models', modelname, timestamp_model + '_mistrained_tau' + str(target_tau))
-original_model_folder = os.path.join('models', modelname)
-mistrained_traj_folder = os.path.join('data', 'mistrained_trajectories', modelname, 'mistrained_tau%d' %(target_tau*100))
-mistrained_traj_base_folder = os.path.join('data', 'mistrained_trajectories')
+mistrained_model_folder = os.path.join('..', 'data', 'nns', 'mistrained_models', modelname, timestamp_model + '_mistrained_tau' + str(target_tau))
+original_model_folder = os.path.join('..', 'data', 'nns','models', modelname)
+mistrained_traj_folder = os.path.join('..', 'data', 'nns', 'mistrained_trajectories', modelname, 'mistrained_tau%d' %(target_tau*100))
+mistrained_traj_base_folder = os.path.join('..', 'data', 'nns', 'mistrained_trajectories')
 
-eval_base_folder = os.path.join('data', 'eval', 'levc')
+eval_base_folder = os.path.join('..', 'data', 'nns', 'eval', 'levc')
 analysis_folder = os.path.join('analysis', 'levc', 'mistrained')
 
 # %% INITIALIZATOINS
@@ -70,14 +70,14 @@ print(f"Using {device} device")
 
 # # %% LOAD MODEL CONFIG FILES
 
-# config = Config({})
-# config.load_config_file(os.path.join(original_model_folder, 'config.yaml'))
+config = Config({})
+config.load_config_file(os.path.join(original_model_folder, 'config.yaml'))
 
-# task_options = Config({})
-# task_options.load_config_file(os.path.join(original_model_folder, 'task_options.yaml'))
+task_options = Config({})
+task_options.load_config_file(os.path.join(original_model_folder, 'task_options.yaml'))
 
-# nn_options = Config({})
-# nn_options.load_config_file(os.path.join(original_model_folder, 'nn_options.yaml'))
+nn_options = Config({})
+nn_options.load_config_file(os.path.join(original_model_folder, 'nn_options.yaml'))
 
 # # %% INITIALIZE ENV AND MODEL
 
@@ -326,7 +326,7 @@ print('max mis', np.max(model_means_mis))
 #timestamp_traj = '20231023135947'
 timestamp_traj = '20240312141018'
 target_taus = np.arange(-3, 4.01, 1)
-mistrained_traj_base_folder = os.path.join('data','perturbed','levc')
+mistrained_traj_base_folder = os.path.join('..', 'data', 'nns','perturbed','levc')
 
 models_mis_taus_control_errs = []
 models_mis_taus_counters_peeks = []

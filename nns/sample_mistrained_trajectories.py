@@ -53,12 +53,12 @@ levc_models = [
 checkpoint = ''
 n_repeats_case = 100
 test_taus = np.arange(0,1.01,0.250)
-mistrained_base_model_folder = os.path.join('data','mistrained_models')
+mistrained_base_model_folder = os.path.join('..', 'data', 'nns','mistrained_models')
 mistraining_timestamp = '20230523204912'
 timestamp = get_timestamp()
 
 #save_results_folder = os.path.join('results', 'pepe', '%s_eval_learning_curves_%srepeats' %(get_timestamp(), n_repeats_case))
-save_results_base = os.path.join('data', 'mistrained_trajectories', )
+save_results_base = os.path.join('..', 'data', 'nns', 'mistrained_trajectories', )
 
 # %% INITIALIZATIONS
 

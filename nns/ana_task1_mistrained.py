@@ -43,12 +43,12 @@ timestamp_model = '20230325003139'
 timestamp_original_traj = '20230522205803'
 n_models = len(pepe_models)
 
-mistrained_model_folder = os.path.join('data', 'mistrained_models', modelname, timestamp_model + '_mistrained_tau' + str(target_tau))
-original_model_folder = os.path.join('models', modelname)
-mistrained_traj_folder = os.path.join('data', 'mistrained_trajectories', modelname, 'mistrained_tau%d' %(target_tau*100))
-mistrained_traj_base_folder = os.path.join('data', 'mistrained_trajectories')
+mistrained_model_folder = os.path.join('..', 'data', 'nns', 'mistrained_models', modelname, timestamp_model + '_mistrained_tau' + str(target_tau))
+original_model_folder = os.path.join('..', 'data', 'nns', 'models', modelname)
+mistrained_traj_folder = os.path.join('..', 'data', 'nns',  'mistrained_trajectories', modelname, 'mistrained_tau%d' %(target_tau*100))
+mistrained_traj_base_folder = os.path.join('..', 'data', 'nns',  'mistrained_trajectories')
 
-eval_base_folder = os.path.join('data', 'eval', 'pepe')
+eval_base_folder = os.path.join('..', 'data', 'nns',  'eval', 'pepe')
 analysis_folder = os.path.join('analysis', 'explore-exploit', 'mistrained')
 
 # %% INITIALIZATOINS

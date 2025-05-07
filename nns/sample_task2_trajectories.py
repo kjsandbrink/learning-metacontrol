@@ -26,7 +26,7 @@ n_repeats_case = 100
 test_taus = np.arange(0,1.01,0.125)
 model_folder = 'models'
 
-save_results_base = os.path.join('data', 'eval', 'levc', )
+save_results_base = os.path.join('..', 'data', 'nns', 'eval', 'levc', )
 
 # %% INITIALIZATIONS
 

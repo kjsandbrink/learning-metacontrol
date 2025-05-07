@@ -34,7 +34,7 @@ control_models = [
     20230317215715,
 ]
 
-base_data_folder = 'data/reps'
+base_data_folder = os.path.join('..', 'data', 'nns','reps')
 
 reps_folder_suffix = '20230416183157_100cases'
 
@@ -164,9 +164,6 @@ n_episodes = 500000
 test_episodes = [n_episodes * i / 10 for i in range(10)] + [n_episodes]
 
 fig = plot_comparison_curves_several_runs(test_episodes, np.array(ape_model_r2scores).T, test_episodes, np.array(control_model_r2scores).T, title='Decoding Loss', axis_xlabel='Training Episodes', axis_ylabel='r2', label_exp='APE-trained', label_control="no APE")
-    # using reversed because outputting efficacy values -- assumes symmetric tau values lists
-
-#fig.savefig(os.path.join(analysis_folder, '%s_rewards_efficacy.png' %get_timestamp()))
 
 analysis_folder = os.path.join('analysis', 'levc')
 os.makedirs(analysis_folder, exist_ok=True)

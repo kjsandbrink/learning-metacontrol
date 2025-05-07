@@ -35,7 +35,7 @@ n_repeats_case = 100
 n_participants = 150
 model_folder = 'models'
 
-save_results_base = os.path.join('data', 'sim_perturbed_participants', task, )
+save_results_base = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', task, )
 
 # %% INITIALIZATIONS
 
@@ -52,18 +52,14 @@ sleep = task == 'levc'
 
 n_effs = 9
 
-mag_perturbation = 0.2
-original_mag_perturbation = 1
-bias_perturbation = -3
-# mag_perturbation = 0.4
+mag_perturbation = 0.25
+bias_perturbation = -0.8
 
-# bias_perturbation = -0.6
-
-
-### MAG PERTURBATION VALUES USED IN RESAMPLING FOR 2023 LEVC RUNS
-# mag_perturbation = 0.01
-# original_mag_perturbation = 3
-## ORIGINAL AMOUNT - USED UP TO AND INCLUDING FIRST RUN 12/17 IS 3
+from settings_ana import trait_sim_mag_perturbation_t1 as original_mag_perturbation
+from settings_ana import trait_sim_bias_perturbation_t1 as original_bias_perturbation
+from settings_ana import trait_sim_timestamp_t1 as perturbations_timestamp
+original_mag_perturbation = original_mag_perturbation / 100
+original_bias_perturbation = original_bias_perturbation / 100
 
 # %% SPECIFY PERTURBED DEVIATION CHARACTERISTICS
 
@@ -74,11 +70,11 @@ if perturbations_timestamp is None or task == 'pepe':
 
 #sim_participant_perturbations = np.zeros((150,))
 else:
-    with open(os.path.join('data', 'sim_perturbed_participants', 'pepe', 'sim', 'mag%d'%(original_mag_perturbation*100), '%s_simulated_participant_perturbations_sim_mag.pkl' %perturbations_timestamp), 'rb') as f:
+    with open(os.path.join('data', 'sim_perturbed_participants', 'pepe', 'sim', 'mag%dbias%d'%(original_mag_perturbation*100, original_bias_perturbation*100), '%s_simulated_participant_perturbations_sim_mag.pkl' %perturbations_timestamp), 'rb') as f:
         sim_participant_perturbations = pickle.load(f) / (original_mag_perturbation / mag_perturbation) + bias_perturbation
-    with open(os.path.join('data', 'sim_perturbed_participants', 'pepe', 'nostruc', 'mag%d'%(original_mag_perturbation*100), '%s_simulated_participant_perturbations_nostruc_mag.pkl' %perturbations_timestamp), 'rb') as f:
+    with open(os.path.join('data', 'sim_perturbed_participants', 'pepe', 'nostruc', 'mag%dbias%d'%(original_mag_perturbation*100, original_bias_perturbation*100), '%s_simulated_participant_perturbations_nostruc_mag.pkl' %perturbations_timestamp), 'rb') as f:
         nostruc_participant_perturbations = pickle.load(f) / (original_mag_perturbation / mag_perturbation) + bias_perturbation
-    with open(os.path.join('data', 'sim_perturbed_participants', 'pepe', 'random', 'mag%d'%(original_mag_perturbation*100), '%s_simulated_participant_perturbations_random_mag.pkl' %perturbations_timestamp), 'rb') as f:
+    with open(os.path.join('data', 'sim_perturbed_participants', 'pepe', 'random', 'mag%dbias%d'%(original_mag_perturbation*100, original_bias_perturbation*100), '%s_simulated_participant_perturbations_random_mag.pkl' %perturbations_timestamp), 'rb') as f:
         random_participant_perturbations = pickle.load(f) / (original_mag_perturbation / mag_perturbation)  + bias_perturbation
         np.random.shuffle(random_participant_perturbations)
 
@@ -158,6 +154,8 @@ def simulate_model_perturbed_participants(modelname, test_taus, perturbations, m
                 pert = perturbation
 
             target_tau = test_tau + pert
+            target_tau = target_tau / 2
+
             (_, _, _, _, controls, _, _), (rews_ape, _, counter_peeks_ape, counter_sleeps_taus_ape, _, _, control_errs_ape) = perturbed_test(config, ape_nn_options, tau_task_options, n_repeats_case = n_repeats_case, device=device, model_folder=model_folder, target_tau=target_tau)
             rews_taus_ape[-1].append(rews_ape)
             counters_peeks_taus_ape[-1].append(counter_peeks_ape)
@@ -224,5 +222,7 @@ if __name__ == '__main__':
 
         for p in processes:
             p.join()
+
+    print("Finished. All processes saved in %s" % save_results_folder)
 
 # %%

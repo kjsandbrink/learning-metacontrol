@@ -23,13 +23,9 @@ from nns.settings_ana import pepe_nn_baseline_models as baseline_models
 from nns.settings_ana import pepe_nn_efficacy_at_input_models as efficacy_at_input_models
 from nns.settings_ana import pepe_nn_extra_node_models as extra_node_models
 
-# #convert baseline_models from dict to list
 baseline_models = flatten(list(baseline_models.values()))
 print(baseline_models)
-#models = control_models + ape_models + efficacy_at_input_models + human_control_models + extra_node_models
-#models = efficacy_at_input_models
 models = baseline_models
-#models = extra_node_models
 
 # %% PARAMETERS
 
@@ -38,7 +34,6 @@ n_repeats_case = 1000
 test_taus = np.arange(0,1.01,0.125)
 model_folder = 'models'
 
-#save_results_folder = os.path.join('results', 'pepe', '%s_eval_learning_curves_%srepeats' %(get_timestamp(), n_repeats_case))
 save_results_base = os.path.join('data', 'eval', 'pepe', )
 
 # %% CREATE TEST FUNCTIONS
@@ -132,22 +127,3 @@ if __name__ == '__main__':
             for p in processes:
                 p.join()
             processes = []
-
-    ### EVALUATE LEARNING CURVES
-    # for ape_model in ape_models:
-    #     ape_model = str(ape_model)
-    #     p = mp.Process(target=test_model, args=(ape_model, os.path.join(save_results_base, ape_model), n_repeats_case, timestamp, True, device))
-    #     p.start()
-    #     processes.append(p)
-
-    # for p in processes:
-    #     p.join()
-
-    # for control_model in control_models:
-    #     control_model = str(control_model)
-    #     p = mp.Process(target=test_model, args=(control_model, os.path.join(save_results_base, control_model), n_repeats_case, timestamp, False, device))
-    #     p.start()
-    #     processes.append(p)
-    
-    # for p in processes:
-    #     p.join()

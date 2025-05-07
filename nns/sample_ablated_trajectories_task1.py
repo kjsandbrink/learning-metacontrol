@@ -38,8 +38,7 @@ n_repeats_case = 100
 test_taus = np.arange(0,1.01,0.125)
 model_folder = 'models'
 
-#save_results_folder = os.path.join('results', 'pepe', '%s_eval_learning_curves_%srepeats' %(get_timestamp(), n_repeats_case))
-save_results_base = os.path.join('data', 'ablated', 'pepe', )
+save_results_base = os.path.join('..', 'data', 'nns', 'ablated', 'pepe', )
 
 # %% INITIALIZATIONS
 

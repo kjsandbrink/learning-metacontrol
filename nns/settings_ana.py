@@ -241,39 +241,40 @@ levc_human_control_models = [
     20240405190145,
 ]
 
+
 # %% SETTINGS FOR INDIVIDUAL DIFFERENCES
 
 ## TASK 1
 trait_sim_mag_perturbation_t1 = 50
 trait_sim_bias_perturbation_t1 = 0
 trait_sim_timestamp_t1 = '20250405134434'
-trait_simulated_participants_folder_t1 = f'/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/pepe/sim/mag{trait_sim_mag_perturbation_t1}bias{trait_sim_bias_perturbation_t1}'
+trait_simulated_participants_folder_t1 = f'../data/nns/sim_perturbed_participants/pepe/sim/mag{trait_sim_mag_perturbation_t1}bias{trait_sim_bias_perturbation_t1}'
 
-random_simulated_participants_folder_t1 = f'/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/pepe/random/mag{trait_sim_mag_perturbation_t1}bias{trait_sim_bias_perturbation_t1}'
+random_simulated_participants_folder_t1 = f'../data/nns/sim_perturbed_participants/pepe/random/mag{trait_sim_mag_perturbation_t1}bias{trait_sim_bias_perturbation_t1}'
 random_sim_timestamp_t1 = trait_sim_timestamp_t1
 
-zeros_simulated_participants_folder_t1 = f'/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/pepe/nostruc/mag{trait_sim_mag_perturbation_t1}bias{trait_sim_bias_perturbation_t1}'
+zeros_simulated_participants_folder_t1 = f'../data/nns/sim_perturbed_participants/pepe/nostruc/mag{trait_sim_mag_perturbation_t1}bias{trait_sim_bias_perturbation_t1}'
 zeros_sim_timestamp_t1 = trait_sim_timestamp_t1
 
-sim_participant_perturbations_file = os.path.join('data', 'sim_perturbed_participants', 'pepe', 'sim', 'mag%dbias%d'%(trait_sim_mag_perturbation_t1, trait_sim_bias_perturbation_t1), '%s_simulated_participant_perturbations_sim_mag.pkl' %trait_sim_timestamp_t1)
-random_participant_perturbations_file = os.path.join('data', 'sim_perturbed_participants', 'pepe', 'random', 'mag%dbias%d'%(trait_sim_mag_perturbation_t1, trait_sim_bias_perturbation_t1), '%s_simulated_participant_perturbations_random_mag.pkl' %trait_sim_timestamp_t1)
-zeros_participant_perturbations_file = os.path.join('data', 'sim_perturbed_participants', 'pepe', 'nostruc', 'mag%dbias%d'%(trait_sim_mag_perturbation_t1, trait_sim_bias_perturbation_t1), '%s_simulated_participant_perturbations_nostruc_mag.pkl' %trait_sim_timestamp_t1)
+sim_participant_perturbations_file = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', 'pepe', 'sim', 'mag%dbias%d'%(trait_sim_mag_perturbation_t1, trait_sim_bias_perturbation_t1), '%s_simulated_participant_perturbations_sim_mag.pkl' %trait_sim_timestamp_t1)
+random_participant_perturbations_file = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', 'pepe', 'random', 'mag%dbias%d'%(trait_sim_mag_perturbation_t1, trait_sim_bias_perturbation_t1), '%s_simulated_participant_perturbations_random_mag.pkl' %trait_sim_timestamp_t1)
+zeros_participant_perturbations_file = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', 'pepe', 'nostruc', 'mag%dbias%d'%(trait_sim_mag_perturbation_t1, trait_sim_bias_perturbation_t1), '%s_simulated_participant_perturbations_nostruc_mag.pkl' %trait_sim_timestamp_t1)
 
 ## TASK 2
 trait_sim_timestamp_t2 = '20250406125929'
 trait_sim_mag_perturbation_t2 = 0.25
 trait_sim_bias_perturbation_t2 = -0.8
-trait_simulated_participants_folder_t2 = '/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/levc/sim/mag%dbias%d' %(trait_sim_mag_perturbation_t2*100, trait_sim_bias_perturbation_t2*100)
+trait_simulated_participants_folder_t2 = '../data/nns/sim_perturbed_participants/levc/sim/mag%dbias%d' %(trait_sim_mag_perturbation_t2*100, trait_sim_bias_perturbation_t2*100)
 
-random_simulated_participants_folder_t2 = '/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/levc/random/mag%dbias%d' %(trait_sim_mag_perturbation_t2*100, trait_sim_bias_perturbation_t2*100)
+random_simulated_participants_folder_t2 = '../data/nns/data/sim_perturbed_participants/levc/random/mag%dbias%d' %(trait_sim_mag_perturbation_t2*100, trait_sim_bias_perturbation_t2*100)
 random_sim_timestamp_t2 = trait_sim_timestamp_t2
 
-zeros_simulated_participants_folder_t2 = '/home/kai/Documents/Projects/meta-peek-take/data/sim_perturbed_participants/levc/nostruc/mag%dbias%d' %(trait_sim_mag_perturbation_t2*100, trait_sim_bias_perturbation_t2*100)
+zeros_simulated_participants_folder_t2 = '../data/nns/sim_perturbed_participants/levc/nostruc/mag%dbias%d' %(trait_sim_mag_perturbation_t2*100, trait_sim_bias_perturbation_t2*100)
 zeros_sim_timestamp_t2 = trait_sim_timestamp_t2
 
-sim_participant_perturbations_file_t2 = os.path.join('data', 'sim_perturbed_participants', 'levc', 'sim', 'mag%dbias%d'%(trait_sim_mag_perturbation_t2 * 100, trait_sim_bias_perturbation_t2 * 100), '%s_simulated_participant_perturbations_sim_mag.pkl' %trait_sim_timestamp_t2)
-random_participant_perturbations_file_t2 = os.path.join('data', 'sim_perturbed_participants', 'levc', 'random', 'mag%dbias%d'%(trait_sim_mag_perturbation_t2 * 100, trait_sim_bias_perturbation_t2 * 100), '%s_simulated_participant_perturbations_random_mag.pkl' %trait_sim_timestamp_t2)
-zeros_participant_perturbations_file_t2 = os.path.join('data', 'sim_perturbed_participants', 'levc', 'nostruc', 'mag%dbias%d'%(trait_sim_mag_perturbation_t2 * 100, trait_sim_bias_perturbation_t2 * 100), '%s_simulated_participant_perturbations_nostruc_mag.pkl' %trait_sim_timestamp_t2)
+sim_participant_perturbations_file_t2 = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', 'levc', 'sim', 'mag%dbias%d'%(trait_sim_mag_perturbation_t2 * 100, trait_sim_bias_perturbation_t2 * 100), '%s_simulated_participant_perturbations_sim_mag.pkl' %trait_sim_timestamp_t2)
+random_participant_perturbations_file_t2 = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', 'levc', 'random', 'mag%dbias%d'%(trait_sim_mag_perturbation_t2 * 100, trait_sim_bias_perturbation_t2 * 100), '%s_simulated_participant_perturbations_random_mag.pkl' %trait_sim_timestamp_t2)
+zeros_participant_perturbations_file_t2 = os.path.join('..', 'data', 'nns', 'sim_perturbed_participants', 'levc', 'nostruc', 'mag%dbias%d'%(trait_sim_mag_perturbation_t2 * 100, trait_sim_bias_perturbation_t2 * 100), '%s_simulated_participant_perturbations_nostruc_mag.pkl' %trait_sim_timestamp_t2)
 
 # %% TIMESTAMPS
 

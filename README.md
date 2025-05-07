@@ -4,7 +4,7 @@ This is code for the publication, "Understanding human meta-control and its path
 
 ### Instructions
 
-The main and supplementary figures are generated from the "fig_\*.ipynb" and "supp_fig_\*.ipynb" notebooks in the "nns" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples of expected output.
+The main and supplementary figures are generated from the "fig_\*.ipynb" and "supp_fig_\*.ipynb" notebooks in the "scripts" folder. All main figure panels beginning with Figure 2 are reproducible using the included data (human behavioral data and recorded neural network trajectories). The notebooks contain samples of expected output.
 
 To run these, the conda environment needs to be installed using the command
 
@@ -13,13 +13,13 @@ conda env create -f environment.yml
 conda activate metacontrol
 ```
 
-With the build environment active, the "humans" folder then needs to be installed as a Python package by calling
+With the build environment active, the "humans" and "nns" folders then need to be installed as Python packages by calling
 
 ``` 
 pip install -e . 
 ```
 
-from the "humans" directory. Both steps together should take a few minutes on a normal computer.
+from the relevant directories. Both steps together should take a few minutes on a normal computer.
 
 To train the neural networks, run the "run_\*.py" files from the folder "nns". Then, run the needed "sample_\*.py" and "save_\*.py" files to generate the synthetic behavioral and neural data, updating the timestamps as needed.
 
@@ -27,7 +27,7 @@ To generate the POMPD solutions, run the "ovb_pepe_testcases_j_takes.jl" script 
 
 A few individual supplementary panels are generated directly from the individual "ana_\*.py" scripts. The "stats_likelihood.ipynb" notebook analyzes the likelihood of human choices under neural network policies.
 
-The human behavioral data is in the "data" folder. The scripts used for data collection are in the "website" folder. Neural network trajectories are in the "data" subfolder in the "nns" folder.
+The human behavioral data is in the "data/humans" folder. The scripts used for data collection are in the "website" folder. Neural network trajectories are in the "data/nns" folder.
 
 ### Versions
 

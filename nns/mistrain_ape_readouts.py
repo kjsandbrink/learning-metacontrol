@@ -74,8 +74,8 @@ def mistrain(ape_model, target_tau, n_episodes, n_checkpoints=100, timestamp=Non
         timestamp = get_timestamp()
 
     checkpoint = ''
-    ape_model_folder = os.path.join('models', str(ape_model))
-    results_folder = os.path.join('data', 'mistrained_models', str(ape_model), timestamp + '_mistrained_tau%d' %int(target_tau*100))
+    ape_model_folder = os.path.join('..', 'data', 'nns', 'models', str(ape_model))
+    results_folder = os.path.join('..', 'data', 'nns', 'mistrained_models', str(ape_model), timestamp + '_mistrained_tau%d' %int(target_tau*100))
 
     # %% LOAD CONFIG FILES
 

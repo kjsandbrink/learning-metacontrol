@@ -252,10 +252,13 @@ class PeekTakeTorchPerturbedAPERNN(nn.Module):
 
         control = self.control(lstm_h)
         
-        #control_weights = self.control.weight
-
-        lstm_h = lstm_h + self.control.weight * (target_tau-control)
+        lstm_h = lstm_h + self.control.weight / torch.norm(self.control.weight)**2 * (target_tau-control)
         lstm_h = torch.flatten(lstm_h)
+
+        ## SAVE NEW CONTROL VALUE
+        control = self.control(lstm_h)
+
+        assert torch.isclose(control, target_tau, atol=1e-5), f"APE Readout {control} and target tau {target_tau} do not match"
     
         hidden = torch.cat((lstm_h, target_tau), dim=0)
 
