@@ -29,10 +29,10 @@ config = Config({
     #'n_episodes': 1500000,
     'n_episodes': 500000,
     #'n_episodes': 750000,
-    #'n_steps_to_reward': 50,
-    'n_steps_to_reward': 12, ## EUNICE
+    'n_steps_to_reward': 50,
+    #'n_steps_to_reward': 12, ## EUNICE
     'note': '',
-    'tags': ['explore-exploit_single runs'], #wandb tag
+    'tags': ['explore-exploit_hardcoded'], #wandb tag
     #'tags': None, #to use if None
     'baseline': '1/n_actions',
     'baseline_type': 'all', #one of ['all', 'all']
@@ -68,9 +68,10 @@ if type(config.training_checkpoints) == int:
 nn_options = Config({
     'lstm_hidden_size': 48, #value used in Wang (2016)
     'value_loss_coeff': 0,
-    'ape_loss_coeff': None, #5
+    #'ape_loss_coeff': None, #5
+    'ape_loss_coeff': 0,
     #'ape_loss_coeff': 25, #5
-    'hardcode_efficacy': False, ### This is only "on" if ape_loss_coeff != 0; however, if it's on, it doesn't matter what ape_loss_coeff is
+    'hardcode_efficacy': False, ### If it's on, it doesn't matter what ape_loss_coeff is
     #'hidden_size': None, #None for no hidden layer (not 0!)
     'hidden_size': 24,
     #'hidden_size': None,
@@ -147,9 +148,9 @@ task_options = Config({
 
 if __name__ == '__main__':
 
-    devices = [ 'cpu', 'cpu']*2
-    tags = ['explore-exploit_w APE', 'explore-exploit_no APE', ]*2
-    ape_loss_coeffs = [25, 0]*2
+    devices = [ 'cpu', 'cpu']
+    tags = ['explore-exploit_hardcoded', 'explore-exploit_hardcoded', ]
+    ape_loss_coeffs = [0]
     
     ## SET UP MULTIPROCESSING
     mp.set_start_method('spawn')

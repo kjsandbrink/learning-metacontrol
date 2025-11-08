@@ -159,7 +159,7 @@ def train(config, nn_options, task_options, device):
 
                 if nn_options.ape_loss_coeff == 0 or not nn_options.hardcode_efficacy:
                     logits, lstm_hidden, values, control = model(torch.tensor(state).to(device).float(), lstm_hidden)
-                elif nn_options.hardcode_efficacy:
+                if nn_options.hardcode_efficacy:
                     logits, lstm_hidden, values, control = model(torch.tensor(state).to(device).float(), lstm_hidden, torch.tensor([env.taus['take']]).to(device))
 
                 sampler = Categorical(logits=logits)
