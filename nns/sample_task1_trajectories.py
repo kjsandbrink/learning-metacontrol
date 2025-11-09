@@ -12,6 +12,10 @@ from utils_project import load_config_files
 from test_case import test
 import os, copy, pickle
 
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import multiprocessing as mp
 
 # %% SPECIFY TEST CASES
@@ -22,11 +26,11 @@ from nns.settings_ana import pepe_human_control_models as human_control_models
 from nns.settings_ana import pepe_nn_baseline_models as baseline_models
 from nns.settings_ana import pepe_nn_efficacy_at_input_models as efficacy_at_input_models
 from nns.settings_ana import pepe_nn_extra_node_models as extra_node_models
+from nns.settings_ana import pepe_nn_efficacy_at_recurrent_models as efficacy_at_recurrent_models
 
 # #convert baseline_models from dict to list
 baseline_models = flatten(list(baseline_models.values()))
-print(baseline_models)
-models = efficacy_at_input_models + baseline_models
+models = efficacy_at_recurrent_models
 
 # %% PARAMETERS
 
@@ -35,7 +39,7 @@ n_repeats_case = 1000
 test_taus = np.arange(0,1.01,0.125)
 model_folder = 'models'
 
-save_results_base = os.path.join('..', 'data', 'nns', 'eval', 'pepe', )
+save_results_base = os.path.join('data', 'nns', 'eval', 'pepe', )
 
 # %% INITIALIZATIONS
 

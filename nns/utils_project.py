@@ -11,7 +11,7 @@ from utils import Config
 
 # %% PARAMETERS
 
-base_model_folder = 'models'
+base_model_folder = os.path.join('nns', 'models')
 
 # %% DATA READ IN
 

@@ -11,6 +11,9 @@ from utils import Config, get_timestamp, flatten
 from utils_project import load_config_files
 from test_case import test
 import os, copy, pickle
+import sys
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import multiprocessing as mp
 
@@ -22,10 +25,11 @@ from nns.settings_ana import pepe_human_control_models as human_control_models
 from nns.settings_ana import pepe_nn_baseline_models as baseline_models
 from nns.settings_ana import pepe_nn_efficacy_at_input_models as efficacy_at_input_models
 from nns.settings_ana import pepe_nn_extra_node_models as extra_node_models
+from nns.settings_ana import pepe_nn_efficacy_at_recurrent_models as efficacy_at_recurrent_models
 
 baseline_models = flatten(list(baseline_models.values()))
-print(baseline_models)
-models = baseline_models
+models = efficacy_at_recurrent_models
+print(models)
 
 # %% PARAMETERS
 
@@ -55,7 +59,7 @@ def test_model_taus(modelname, test_taus, config=None, task_options=None, nn_opt
 
         task_options.starting_taus = {'peek': 0, 'take': test_tau}
 
-        _, (rews_ape, _, _, _, returns_loss_ape, ape_loss_ape, ape_mse_ape) = test(config, nn_options, task_options, device, checkpoint=checkpoint, model_folder = os.path.join('models', str(modelname)))
+        _, (rews_ape, _, _, _, returns_loss_ape, ape_loss_ape, ape_mse_ape) = test(config, nn_options, task_options, device, checkpoint=checkpoint, model_folder = os.path.join('nns', 'models', str(modelname)))
 
         tau_rews.append(rews_ape)
         tau_returns_losses.append(returns_loss_ape)
