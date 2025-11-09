@@ -184,6 +184,11 @@ pepe_nn_extra_node_models = [
     20240316231759,
 ]
 
+## EFFICACY-AT-RECURRENT MODELS
+pepe_nn_efficacy_at_recurrent_models = [
+    
+]
+
 #### WITH BIAS 0.5, VOLATILITY 0.2, AND NO HELDOUT TEST REGION
 #### 10/06/23
 pepe_human_ape_models = [
