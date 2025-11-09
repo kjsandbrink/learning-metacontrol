@@ -186,7 +186,16 @@ pepe_nn_extra_node_models = [
 
 ## EFFICACY-AT-RECURRENT MODELS
 pepe_nn_efficacy_at_recurrent_models = [
-    
+        20251108130043,
+        20251108130044,
+        20251108130045,
+        20251108130047,
+        20251108130049,
+        20251108130050,
+        20251108130052,
+        20251108130053,
+        20251108130055,
+        20251108130056,
 ]
 
 #### WITH BIAS 0.5, VOLATILITY 0.2, AND NO HELDOUT TEST REGION
