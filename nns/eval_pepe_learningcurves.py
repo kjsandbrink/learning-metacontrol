@@ -36,9 +36,9 @@ print(models)
 n_checkpoints = 100
 n_repeats_case = 1000
 test_taus = np.arange(0,1.01,0.125)
-model_folder = 'models'
+model_folder = os.path.join('nns', 'models')
 
-save_results_base = os.path.join('data', 'eval', 'pepe', )
+save_results_base = os.path.join('data', 'nns', 'eval', 'pepe', )
 
 # %% CREATE TEST FUNCTIONS
 
@@ -59,7 +59,7 @@ def test_model_taus(modelname, test_taus, config=None, task_options=None, nn_opt
 
         task_options.starting_taus = {'peek': 0, 'take': test_tau}
 
-        _, (rews_ape, _, _, _, returns_loss_ape, ape_loss_ape, ape_mse_ape) = test(config, nn_options, task_options, device, checkpoint=checkpoint, model_folder = os.path.join('nns', 'models', str(modelname)))
+        _, (rews_ape, _, _, _, returns_loss_ape, ape_loss_ape, ape_mse_ape) = test(config, nn_options, task_options, device, checkpoint=checkpoint, model_folder = os.path.join(model_folder, modelname))
 
         tau_rews.append(rews_ape)
         tau_returns_losses.append(returns_loss_ape)
