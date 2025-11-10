@@ -37,7 +37,7 @@ models = efficacy_at_recurrent_models
 checkpoint = ''
 n_repeats_case = 1000
 test_taus = np.arange(0,1.01,0.125)
-model_folder = 'models'
+model_folder = os.path.join('nns', 'models')
 
 save_results_base = os.path.join('data', 'nns', 'eval', 'pepe', )
 
