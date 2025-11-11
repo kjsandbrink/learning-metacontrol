@@ -199,10 +199,13 @@ def test(config, nn_options, task_options, device, checkpoint = '', model_folder
 
         for j in range(config.n_steps_to_reward):
 
-            if nn_options.ape_loss_coeff == 0 or not nn_options.hardcode_efficacy:
-                logits, lstm_hidden, value, control = model(torch.tensor(state).to(device).float(), lstm_hidden)
-            elif nn_options.hardcode_efficacy:
+
+            if nn_options.hardcode_efficacy:
                 logits, lstm_hidden, value, control = model(torch.tensor(state).to(device).float(), lstm_hidden, torch.tensor([env.taus['take']]).float().to(device))
+            elif nn_options.ape_loss_coeff == 0 or not nn_options.hardcode_efficacy:
+                logits, lstm_hidden, value, control = model(torch.tensor(state).to(device).float(), lstm_hidden)
+            else:
+                raise ValueError("invalid nn_options configuration")
 
             saved_logits.append(logits.cpu().detach().tolist())
             
