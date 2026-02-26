@@ -298,8 +298,8 @@ pepe_nn_control_lc_timestamp = '20240408223405'
 pepe_nn_extra_node_lc_timestamp = '20240318134420'
 pepe_nn_efficacy_at_input_traj_timestamp = '20240429123622'
 pepe_nn_efficacy_at_input_lc_timestamp = '20240411100946'
-pepe_nn_efficacy_at_recurrent_traj_timestamp = '20251109152703'
-pepe_nn_efficacy_at_recurrent_lc_timestamp = '20251109152558'
+pepe_nn_efficacy_at_recurrent_traj_timestamp = '20251111112818'
+pepe_nn_efficacy_at_recurrent_lc_timestamp = '20251111112822'
 pepe_nn_decoding_timestamp = '20240409140548'
 pepe_nn_baseline_lc_timestamp = '20240428225443'
 pepe_human_ape_traj_timestamp = '20231006143445'
@@ -346,6 +346,7 @@ color_humans = 'C2'
 
 color_sarsop = 'red'
 color_efficacy_input = 'C4'
+color_efficacy_recurrent = 'C9'
 color_extra_node = 'C5'
 color_baselines = 'C6'
 
@@ -361,6 +362,7 @@ colors = {
     'humans': color_humans,
     'sarsop': color_sarsop,
     'efficacy_at_input': color_efficacy_input,
+    'efficacy_at_recurrent': color_efficacy_recurrent,
     'extra_node': color_extra_node,
     'baselines': color_baselines,
     'trait': color_trait,
